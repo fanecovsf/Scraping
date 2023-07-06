@@ -55,3 +55,5 @@ for file in files_list:
     
     else:
         pass
+
+link.quitSite()
