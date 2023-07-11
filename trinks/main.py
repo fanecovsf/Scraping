@@ -33,4 +33,14 @@ def trinks_extract():
 
     trinks.clickElement('/html/body/div[3]/div[2]/div/div/div[4]/div[2]/div[1]/input')
 
+    for file in os.listdir(reports_path):
+        if 'rankingDeProfissionais' in file:
+            os.remove(os.path.join(reports_path, file))
+
+    time.sleep(2)
+
+    for file in os.listdir(download_path):
+        if 'rankingDeProfissionais' in file:
+            shutil.move(download_path, reports_path)
+
 trinks_extract()
