@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common import keys
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 class Link:
@@ -11,6 +12,7 @@ class Link:
         self.headless = headless
         self.link = link
         self.sleep = sleep
+        
 
         match driver:
             case "Chrome":
@@ -28,6 +30,8 @@ class Link:
 
             case "Firefox":
                 self.driver = webdriver.Firefox(options=Options())
+
+        self.actions = ActionChains(self.driver)
 
     def openLink(self):
         self.driver.get(url=self.link)
@@ -76,6 +80,12 @@ class Link:
     @tryGeneral
     def pressEnter(self, elemenXpath):
         self.driver.find_element(By.XPATH, elemenXpath).send_keys(keys.Keys.ENTER)
+
+    @tryGeneral
+    def clearText(self, elementXpath):
+        self.driver.find_element(By.XPATH, elementXpath).click()
+        self.actions.key_down(keys.Keys.CONTROL).send_keys('a').key_up(keys.Keys.CONTROL).perform()
+        self.driver.find_element(By.XPATH, elementXpath).send_keys(keys.Keys.BACKSPACE)
 
     @tryGeneral
     def sendKeysName(self, elementName, text):
