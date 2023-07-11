@@ -1,6 +1,12 @@
 import time
+import os
+import shutil
 
 from link import Link
+
+download_path = r'C:\Users\Catedral Barbearia\Downloads'
+
+reports_path = r'C:\Users\Catedral Barbearia\OneDrive\Relatórios - BI'
 
 def trinks_extract():
     trinks = Link("https://www.trinks.com/Login", "Chrome", sleep=1, headless=False)
