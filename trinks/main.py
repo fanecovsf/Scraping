@@ -3,7 +3,7 @@ import os
 import shutil
 import datetime
 
-from webfan_gustavo.webfan import Link
+from link import Link
 
 
 download_path = r'C:\Users\Catedral Barbearia\Downloads'
@@ -83,6 +83,8 @@ def trinks_extract():
 
             else:
                 pass
+
+        trinks.quitSite()
 
     elif execute == False:
         pass

@@ -101,3 +101,6 @@ class Link:
     @tryGeneral
     def sendKeysName(self, elementName, text):
         self.driver.find_element(By.NAME, elementName).send_keys(text)
+
+    def quitSite(self):
+        self.driver.quit()
