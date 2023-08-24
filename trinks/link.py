@@ -4,6 +4,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common import keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.service import Service
+import os
 import time
 
 class Link:
@@ -26,7 +28,16 @@ class Link:
                     self.driver.implicitly_wait(5)
 
                 elif self.headless == False:
-                    self.driver = webdriver.Chrome(options=Options())
+                    current_path = os.path.abspath(__file__)
+                    current_path = os.path.dirname(current_path)
+                    driver_path = os.path.join(current_path, 'chromedriver.exe')
+                    
+                    if os.path.exists(driver_path):
+                        service = Service(driver_path)
+                        self.driver = webdriver.Chrome(options=Options(), service=service)
+
+                    else:
+                        self.driver = webdriver.Chrome(options=Options())
 
             case "Firefox":
                 self.driver = webdriver.Firefox(options=Options())
