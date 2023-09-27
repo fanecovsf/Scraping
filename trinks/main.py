@@ -35,7 +35,7 @@ def trinks_extract():
 
         trinks.sendKeys('//*[@id="fSenha"]', '@mcdlemao0505')
 
-        trinks.clickElement('//*[@id="login"]/div/div/form/div[3]/div[2]/button')
+        trinks.clickElement('//*[@id="login"]/div/form/div[4]/button')
 
         trinks.clickElement('//*[@id="globalsite"]/section/nav/ul/li/div[5]/div[1]/a')
 
