@@ -21,7 +21,7 @@ def trinks_extract():
     else:
         ultimo_dia = datetime.date.today() - datetime.timedelta(days=1)
         ultimo_dia = datetime.date.strftime(ultimo_dia, "%d/%m/%Y")
-        data = f"{primeiro_dia} - {ultimo_dia}"
+        data = f"{primeiro_dia}   {ultimo_dia}"
         execute = True
 
     if execute == True:
@@ -37,17 +37,20 @@ def trinks_extract():
 
         trinks.clickElement('//*[@id="login"]/div/form/div[4]/button')
 
+        time.sleep(5)
+
         trinks.clickElement('//*[@id="globalsite"]/section/nav/ul/li/div[5]/div[1]/a')
 
         trinks.clickElement('//*[@id="globalsite"]/section/nav/ul/li/div[5]/div[2]/ul[1]/li/a')
 
-        trinks.clickElement('//*[@id="globalsite"]/section/nav/ul/li/div[5]/div[2]/ul[1]/li/ul/li[3]/a/span[2]')
+        trinks.clickElement('//*[@id="globalsite"]/section/nav/ul/li/div[5]/div[2]/ul[1]/li/ul/li[4]/a')
 
         trinks.clickElement('//*[@id="formFiltro"]/div/div[2]/div/button[1]')
 
         time.sleep(1)
 
         trinks.clearText('//*[@id="mapa-calor-filtro-periodo"]')
+        trinks.clearField('//*[@id="mapa-calor-filtro-periodo"]')
 
         time.sleep(3)
 
@@ -65,8 +68,7 @@ def trinks_extract():
 
         trinks.clickElement('/html/body/div[3]/div[2]/div/div/div[4]/div[2]/div[1]/input')
 
-        time.sleep(3)
-
+        time.sleep(300)
         for file in os.listdir(reports_path):
             if 'rankingDeProfissionais' in file:
                 os.remove(os.path.join(reports_path, file))
